@@ -4,11 +4,11 @@ import random as rnd
 from mpl_interactions import  panhandler, zoom_factory
 
 #local files
+#temporary test data from csv
 import read_data as data
 import display, ants
 
-#start_id = input("Start Airport Identificator: ")
-#end_id = input("End Airport Identificator: ")
+#Define ICAO-Codes of Start and End Airport
 start_id = "EDDH"
 end_id = "EGLL"
 
@@ -17,6 +17,7 @@ end_airport = []
 display.plt = plt
 ants.plt = plt
 
+#Search for Airports using ICAO Codes
 for airport in data.airports:
     if airport[0] == start_id:
         start_airport = airport
@@ -29,21 +30,23 @@ if start_airport == end_airport:
 
 
 fig, ax = plt.subplots()
-#ax.set_yticklabels([])
-#ax.set_xticklabels([])
 ax.set_xlabel("Distance from equator (1000km)")
 ax.set_ylabel("Distance from prime meridian (1000km)")
 
+#Plot Navaids and Airports
 display.fromCoords(data.navaids, "RED", 0.2)
 display.fromCoords(data.airports, "Blue", 0.4)
 
+#Plot start and end Airport
 display.fromCoords([start_airport,end_airport], "Orange", 20)
 
 for i in range(100):
-    ants.Ant(rnd.random()*5,rnd.random()*5,rnd.random()*3.1)
+    ants.Ant(rnd.random()*5,rnd.random()*5,3.14-rnd.random()*6.28)
 
+#Define Scatter for all Ants
 antscat = ants.displayAnts()
 
+#Update Animation
 def update(frame):
     points = []
     for ant in ants.ants:
@@ -52,9 +55,9 @@ def update(frame):
     antscat.set_offsets(points)
     return antscat
 
-plt.title("Navaids and Airports")
+#Matplot stuff
+plt.title("AeroAnts")
 plt.legend(["Navaid","Airport", "Focus", "Ant"]).set_loc("lower right")
-#plt.grid(True)
 ani = animation.FuncAnimation(fig=fig, func=update, frames=40, interval=1)
 disconnect_zoom = zoom_factory(ax)
 pan_handler = panhandler(fig)

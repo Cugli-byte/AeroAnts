@@ -3,14 +3,18 @@ import matplotlib
 transformer = Transformer.from_crs("EPSG:4326", "EPSG:4087")
 plt = []
 
+#Convert from degrees to x,y coords
 def degToXY(lon, lat):
     x, y = transformer.transform(lon, lat)
     return x*10**-6,y*10**-6
 
+#Returns Point name and transformed coords
 def pointTransform(point):
     x, y = degToXY(point[1][0], point[1][1])
     return (point[0],(x,y))
 
+#Scatters Points that are in Degrees
+#Point(NAME:string,(x:int,y:int))
 def fromCoords(points, color, size) -> matplotlib.collections.PathCollection:
     nav_x  = []
     nav_y = []

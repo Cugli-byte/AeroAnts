@@ -17,10 +17,13 @@ class Ant:
         self.dir = dir
         ants.append(self)
 
+    #Gets run every tick and updates position accordingly
+    #TODO: Ant logic
     def tick(self):
         self.pos=(self.pos[0]+self.speed*math.cos(self.dir),self.pos[1]+self.speed*math.sin(self.dir))
         print(self.pos)
     
+    #Debug display of one ant
     def display(self):
         display.fromCoords([("Ant",self.pos)], "BROWN", 2)
 
@@ -32,6 +35,9 @@ class Pheromone:
         self.pos = (x,y)
         self.weight = weight;
 
+    #TODO: Pheromone logic
+
+#Generate Scatter for Ants
 def displayAnts() -> matplotlib.collections.PathCollection:
     points = []
     for ant in ants:
