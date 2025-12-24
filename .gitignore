@@ -6,7 +6,7 @@
 
 /antsSimple/__pycache__/
 /antsSimple/resources/
-/antsSimple/read_data/
+/antsSimple/read_data.py
 
 #misc
 .DS_store
