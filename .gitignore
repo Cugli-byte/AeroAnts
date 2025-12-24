@@ -1,0 +1,14 @@
+#python env
+/aeroants/
+
+#exp
+/exp/
+
+/antsSimple/__pycache__/
+/antsSimple/resources/
+/antsSimple/read_data/
+
+#misc
+.DS_store
+/.vscode/
+
