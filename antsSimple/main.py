@@ -40,11 +40,14 @@ display.fromCoords(data.airports, "Blue", 0.4)
 #Plot start and end Airport
 display.fromCoords([start_airport,end_airport], "Orange", 20)
 
-for i in range(100):
-    ants.Ant(rnd.random()*5,rnd.random()*5,3.14-rnd.random()*6.28)
+ants.Ant(0,0,3.14-rnd.random()*6.28)
 
-#Define Scatter for all Ants
+for i in range(100):
+    ants.Pheromone(rnd.random()*50,rnd.random()*50,1.0)
+
+#Define Scatter for all Ants and Pheromones
 antscat = ants.displayAnts()
+pherscat = ants.displayPheromones()
 
 #Update Animation
 def update(frame):
